@@ -233,15 +233,15 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "run",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "run",
+"speed": 6.0
 } ]
 
 [sub_resource type="CircleShape2D" id=19]
@@ -300,3 +300,6 @@ position = Vector2( 120, 77 )
 
 [node name="Coin2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 200, 77 )
+
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 296, 80 )
