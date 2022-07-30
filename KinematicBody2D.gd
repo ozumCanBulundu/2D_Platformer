@@ -7,6 +7,9 @@ var horizontalAcceleration = 1000
 var jumpSpeed = 250
 var lessJumpMultiplier = 5
 var canJump = true
+var wallJumpY = 150
+var wallJumpX = 50
+var wallJump = false
 
 
 func _ready():
@@ -30,8 +33,13 @@ func _process(delta):
 		velocity.y = moveVector.y * jumpSpeed
 		canJump = false
 	
-	if(is_on_floor()):
+	wallJump = nextToWall()
+	
+	if(is_on_floor() or wallJump):
 		canJump = true
+		
+	if(is_on_wall()):
+		velocity.y = 30
 		
 	
 	if (velocity.y < 0 and !Input.is_action_pressed("action_jump")):
@@ -40,6 +48,7 @@ func _process(delta):
 	
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity , Vector2.UP)
+	
 	
 	#will do coyotetimer later *********************************************************************
 	
@@ -65,8 +74,11 @@ func update_animation():
 		$AnimatedSprite.flip_h = true if moveVec.x > 0 else false
 	
 	
-	
-	
+func nextToWall():
+	if($LeftWall.is_colliding() or $RightWall.is_colliding()):
+		return true
+	else:
+		return false
 	
 	
 	

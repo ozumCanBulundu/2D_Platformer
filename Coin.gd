@@ -6,7 +6,7 @@ func _ready():
 
 func on_area_entered(area2d):
 	$AnimationPlayer.play("pick_up")
-	call_deferred("_pickup_disabled()")
+	
 	
 func _pickup_disabled():
 	$Area2D/CollisionShape2D.disabled = true
